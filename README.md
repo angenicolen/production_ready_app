@@ -1,4 +1,5 @@
 # TaskFlow
+[![Flutter CI](https://github.com/angenicolen/production_ready_app/actions/workflows/ci.yml/badge.svg)](https://github.com/angenicolen/production_ready_app/actions/workflows/ci.yml)
 
 TaskFlow est une application Flutter de gestion de tâches conçue avec une approche orientée vers la qualité, les tests et la préparation à la production.
 
@@ -14,7 +15,7 @@ TaskFlow est une application Flutter de gestion de tâches conçue avec une appr
 - Navigation entre cinq écrans
 - Validation des formulaires
 - Support de l'accessibilité avec des labels sémantiques
-- Interface optimisée avec des widgets `const` lorsque cela est possible
+- Utilisation de widgets `const` lorsque cela est possible
 
 ## Écrans
 
@@ -30,12 +31,14 @@ L'application contient cinq écrans principaux :
 
 Le projet utilise une structure simple et organisée :
 
+```text
 lib/
 ├── main.dart
 ├── models/
 │   └── task.dart
 └── services/
     └── task_service.dart
+```
 
 - `models/` contient les modèles de données.
 - `services/` contient la logique de gestion des tâches.
@@ -45,24 +48,29 @@ lib/
 
 Le projet comprend plusieurs niveaux de tests :
 
-- Tests unitaires pour le modèle `Task`
-- Tests unitaires pour `TaskService`
-- Tests de widgets pour les différents écrans
-- Tests d'intégration pour vérifier les parcours utilisateur
+- **10 tests unitaires** pour le modèle `Task` et le service `TaskService`
+- **6 tests de widgets** pour vérifier le comportement de l'interface
+- **2 tests d'intégration** pour vérifier les parcours utilisateur
 
-Les tests sont exécutés avec :
+Les tests classiques sont exécutés avec :
 
+```bash
 flutter test
+```
 
 Les tests d'intégration sur Chrome sont exécutés avec :
 
+```bash
 flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart -d chrome
+```
 
 ## Qualité du code
 
 L'analyse statique du projet est effectuée avec :
 
+```bash
 flutter analyze
+```
 
 Le projet doit rester sans erreurs ni avertissements avant chaque livraison.
 
@@ -73,7 +81,7 @@ TaskFlow prend en charge deux langues :
 - Français
 - English
 
-L'utilisateur peut changer la langue depuis l'écran Paramètres.
+L'utilisateur peut changer de langue depuis l'écran Paramètres.
 
 ## Accessibilité
 
@@ -85,7 +93,9 @@ L'application privilégie :
 
 - Les widgets `const` lorsque cela est possible
 - Une structure simple limitant les reconstructions inutiles
-- Une interface légère et adaptée aux performances de Flutter
+- L'affichage des tâches avec une liste adaptée aux performances
+
+L'application n'utilise pas d'images distantes ou lourdes nécessitant une optimisation particulière.
 
 ## Installation
 
@@ -93,42 +103,60 @@ L'application privilégie :
 
 - Flutter
 - Dart
-- Un navigateur compatible, tel que Google Chrome
+- Google Chrome pour les tests d'intégration
 
-### Installation du projet
+### Installation
 
 Cloner le dépôt :
 
-git clone <URL_DU_DEPOT>
+```bash
+git clone https://github.com/angenicolen/production_ready_app.git
+```
 
 Entrer dans le projet :
 
+```bash
 cd production_ready_app
+```
 
 Installer les dépendances :
 
+```bash
 flutter pub get
+```
 
 Lancer l'application :
 
+```bash
 flutter run
+```
 
 Pour lancer l'application sur Chrome :
 
+```bash
 flutter run -d chrome
+```
 
 ## Vérification
 
 Avant de publier une nouvelle version, exécuter :
 
+```bash
 flutter analyze
 flutter test
+```
 
 Puis vérifier les tests d'intégration.
 
 ## CI/CD
 
-Le projet utilise GitHub Actions pour automatiser les vérifications du code et l'exécution des tests à chaque modification du dépôt.
+Le projet utilise **GitHub Actions** pour automatiser l'analyse du code et l'exécution des tests à chaque modification du dépôt.
+
+Le workflow CI exécute notamment :
+
+- `flutter pub get`
+- `flutter analyze`
+- `flutter test`
 
 ## Captures d'écran
 
