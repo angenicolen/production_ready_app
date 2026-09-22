@@ -3,6 +3,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'models/task.dart';
 import 'services/task_service.dart';
+import 'localization/app_texts.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(const TaskFlowApp());
@@ -51,52 +53,6 @@ class _TaskFlowAppState extends State<TaskFlowApp> {
     );
   }
 }
-
-class AppTexts {
-  static String title(Locale locale) =>
-      locale.languageCode == 'en' ? 'TaskFlow' : 'TaskFlow';
-
-  static String home(Locale locale) =>
-      locale.languageCode == 'en' ? 'Home' : 'Accueil';
-
-  static String tasks(Locale locale) =>
-      locale.languageCode == 'en' ? 'Tasks' : 'Tâches';
-
-  static String add(Locale locale) =>
-      locale.languageCode == 'en' ? 'Add' : 'Ajouter';
-
-  static String statistics(Locale locale) =>
-      locale.languageCode == 'en' ? 'Statistics' : 'Statistiques';
-
-  static String settings(Locale locale) =>
-      locale.languageCode == 'en' ? 'Settings' : 'Paramètres';
-
-  static String welcome(Locale locale) => locale.languageCode == 'en'
-      ? 'Welcome to TaskFlow'
-      : 'Bienvenue sur TaskFlow';
-
-  static String subtitle(Locale locale) => locale.languageCode == 'en'
-      ? 'Organize your tasks simply and efficiently.'
-      : 'Organisez vos tâches simplement et efficacement.';
-
-  static String myTasks(Locale locale) =>
-      locale.languageCode == 'en' ? 'My tasks' : 'Mes tâches';
-
-  static String addTask(Locale locale) => locale.languageCode == 'en'
-      ? 'Add a task'
-      : 'Ajouter une tâche';
-
-  static String taskList(Locale locale) =>
-      locale.languageCode == 'en' ? 'Task list' : 'Liste des tâches';
-
-  static String statisticsTitle(Locale locale) => locale.languageCode == 'en'
-      ? 'Task statistics'
-      : 'Statistiques des tâches';
-
-  static String settingsTitle(Locale locale) =>
-      locale.languageCode == 'en' ? 'Application settings' : 'Paramètres de l’application';
-}
-
 class MainNavigation extends StatefulWidget {
   final ValueChanged<Locale> onLanguageChanged;
 
@@ -170,74 +126,6 @@ class _MainNavigationState extends State<MainNavigation> {
             label: AppTexts.settings(locale),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  final TaskService taskService;
-
-  const HomeScreen({
-    super.key,
-    required this.taskService,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final locale = Localizations.localeOf(context);
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(AppTexts.title(locale)),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              AppTexts.welcome(locale),
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const SizedBox(height: 12),
-            Text(
-              AppTexts.subtitle(locale),
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            const SizedBox(height: 32),
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.task_alt,
-                      size: 40,
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            AppTexts.myTasks(locale),
-                            style: Theme.of(context).textTheme.titleLarge,
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            '${taskService.pendingCount} ${locale.languageCode == 'en' ? 'task(s) pending' : 'tâche(s) en cours'}',
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
