@@ -26,7 +26,6 @@ L'application contient cinq écrans principaux :
 3. Ajouter une tâche
 4. Statistiques
 5. Paramètres
-
 ## Architecture
 
 Le projet utilise une structure simple et organisée :
@@ -34,16 +33,21 @@ Le projet utilise une structure simple et organisée :
 ```text
 lib/
 ├── main.dart
+├── localization/
+│   └── app_texts.dart
 ├── models/
 │   └── task.dart
+├── screens/
+│   └── home_screen.dart
 └── services/
     └── task_service.dart
 ```
 
+- `localization/` contient les textes utilisés pour le français et l'anglais.
 - `models/` contient les modèles de données.
+- `screens/` contient les écrans de l'application.
 - `services/` contient la logique de gestion des tâches.
-- `main.dart` contient l'application, la navigation et les écrans.
-
+- `main.dart` contient la configuration de l'application et la navigation principale.
 ## Tests
 
 Le projet comprend plusieurs niveaux de tests :
