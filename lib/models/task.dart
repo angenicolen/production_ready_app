@@ -24,4 +24,37 @@ class Task {
       isCompleted: isCompleted ?? this.isCompleted,
     );
   }
+
+  @override
+  String toString() {
+    return 'Task('
+        'id: $id, '
+        'title: $title, '
+        'description: $description, '
+        'isCompleted: $isCompleted'
+        ')';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+
+    return other is Task &&
+        other.id == id &&
+        other.title == title &&
+        other.description == description &&
+        other.isCompleted == isCompleted;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      id,
+      title,
+      description,
+      isCompleted,
+    );
+  }
 }

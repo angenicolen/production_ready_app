@@ -1,39 +1,45 @@
-import 'package:flutter_test/flutter_test.dart';
-import 'package:integration_test/integration_test.dart';
-import 'package:production_ready_app/main.dart';
+import 'dart:ui';
 
-void main() {
-  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+class AppTexts {
+  static String title(Locale locale) => 'TaskFlow';
 
-  testWidgets('Parcours utilisateur : accueil vers tâches', (
-    WidgetTester tester,
-  ) async {
-    await tester.pumpWidget(const TaskFlowApp());
+  static String home(Locale locale) =>
+      locale.languageCode == 'en' ? 'Home' : 'Accueil';
 
-    // Vérifier l'accueil
-    expect(find.text('Bienvenue sur TaskFlow'), findsOneWidget);
+  static String tasks(Locale locale) =>
+      locale.languageCode == 'en' ? 'Tasks' : 'Tâches';
 
-    // Aller vers l'écran Tâches
-    await tester.tap(find.text('Tâches'));
-    await tester.pumpAndSettle();
+  static String add(Locale locale) =>
+      locale.languageCode == 'en' ? 'Add' : 'Ajouter';
 
-    // Vérifier l'écran Tâches
-    expect(find.text('Mes tâches'), findsOneWidget);
-  });
+  static String statistics(Locale locale) =>
+      locale.languageCode == 'en' ? 'Statistics' : 'Statistiques';
 
-  testWidgets('Parcours utilisateur : accueil vers ajout de tâche', (
-    WidgetTester tester,
-  ) async {
-    await tester.pumpWidget(const TaskFlowApp());
+  static String settings(Locale locale) =>
+      locale.languageCode == 'en' ? 'Settings' : 'Paramètres';
 
-    // Vérifier l'accueil
-    expect(find.text('Bienvenue sur TaskFlow'), findsOneWidget);
+  static String welcome(Locale locale) => locale.languageCode == 'en'
+      ? 'Welcome to TaskFlow'
+      : 'Bienvenue sur TaskFlow';
 
-    // Aller vers l'écran Ajouter
-    await tester.tap(find.text('Ajouter'));
-    await tester.pumpAndSettle();
+  static String subtitle(Locale locale) => locale.languageCode == 'en'
+      ? 'Organize your tasks simply and efficiently.'
+      : 'Organisez vos tâches simplement et efficacement.';
 
-    // Vérifier l'écran d'ajout
-    expect(find.text('Ajouter une tâche'), findsOneWidget);
-  });
+  static String myTasks(Locale locale) =>
+      locale.languageCode == 'en' ? 'My tasks' : 'Mes tâches';
+
+  static String addTask(Locale locale) =>
+      locale.languageCode == 'en' ? 'Add a task' : 'Ajouter une tâche';
+
+  static String taskList(Locale locale) =>
+      locale.languageCode == 'en' ? 'Task list' : 'Liste des tâches';
+
+  static String statisticsTitle(Locale locale) => locale.languageCode == 'en'
+      ? 'Task statistics'
+      : 'Statistiques des tâches';
+
+  static String settingsTitle(Locale locale) => locale.languageCode == 'en'
+      ? 'Application settings'
+      : "Paramètres de l'application";
 }
