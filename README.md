@@ -38,7 +38,11 @@ lib/
 ├── models/
 │   └── task.dart
 ├── screens/
-│   └── home_screen.dart
+│   ├── home_screen.dart
+│   ├── tasks_screen.dart
+│   ├── add_task_screen.dart
+│   ├── statistics_screen.dart
+│   └── settings_screen.dart
 └── services/
     └── task_service.dart
 ```
@@ -62,10 +66,10 @@ Les tests classiques sont exécutés avec :
 flutter test
 ```
 
-Les tests d'intégration sur Chrome sont exécutés avec :
+Pour exécuter les tests d'intégration :
 
 ```bash
-flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart -d chrome
+flutter test integration_test
 ```
 
 ## Qualité du code
