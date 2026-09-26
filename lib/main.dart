@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:provider/provider.dart';
-import 'package:production_ready_app/app_texts.dart';
+import 'package:flutter_localizations/flutter_localizations.dart'; 
 
-import 'localization/app_texts.dart';
+import 'package:provider/provider.dart';
+
+
+import 'app_texts.dart';
 import 'screens/add_task_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/settings_screen.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../localization/app_texts.dart';
+
 import '../services/task_service.dart';
 import 'package:production_ready_app/app_texts.dart';
 

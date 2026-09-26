@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../localization/app_texts.dart';
+
 import 'package:production_ready_app/app_texts.dart'; 
 
 
