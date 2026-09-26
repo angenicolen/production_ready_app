@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../localization/app_texts.dart';
+import 'package:production_ready_app/app_texts.dart'; 
+
 
 class SettingsScreen extends StatelessWidget {
   final ValueChanged<Locale> onLanguageChanged;
@@ -34,25 +36,33 @@ class SettingsScreen extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 24),
-            ListTile(
-              title: const Text('Français'),
-              leading: const Icon(Icons.language),
-              trailing: locale.languageCode == 'fr'
-                  ? const Icon(Icons.check)
-                  : null,
-              onTap: () {
-                onLanguageChanged(const Locale('fr'));
-              },
+            Semantics(
+              label: 'Changer la langue en Français',
+              button: true,
+              child: ListTile(
+                title: const Text('Français'),
+                leading: const Icon(Icons.language),
+                trailing: locale.languageCode == 'fr'
+                    ? const Icon(Icons.check)
+                    : null,
+                onTap: () {
+                  onLanguageChanged(const Locale('fr'));
+                },
+              ),
             ),
-            ListTile(
-              title: const Text('English'),
-              leading: const Icon(Icons.language),
-              trailing: locale.languageCode == 'en'
-                  ? const Icon(Icons.check)
-                  : null,
-              onTap: () {
-                onLanguageChanged(const Locale('en'));
-              },
+            Semantics(
+              label: 'Switch language to English',
+              button: true,
+              child: ListTile(
+                title: const Text('English'),
+                leading: const Icon(Icons.language),
+                trailing: locale.languageCode == 'en'
+                    ? const Icon(Icons.check)
+                    : null,
+                onTap: () {
+                  onLanguageChanged(const Locale('en'));
+                },
+              ),
             ),
           ],
         ),

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../localization/app_texts.dart';
 import '../services/task_service.dart';
+import 'package:production_ready_app/app_texts.dart';
+
 
 class HomeScreen extends StatelessWidget {
-  final TaskService taskService;
-
-  const HomeScreen({
-    super.key,
-    required this.taskService,
-  });
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final locale = Localizations.localeOf(context);
+    // Écoute le TaskService fourni par Provider
+    final taskService = context.watch<TaskService>();
 
     return Scaffold(
       appBar: AppBar(

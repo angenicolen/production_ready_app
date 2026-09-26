@@ -1,46 +1,45 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:integration_test/integration_test.dart';
+import 'package:provider/provider.dart';
 
-class AppTexts {
-  static String title(Locale locale) =>
-      locale.languageCode == 'en' ? 'TaskFlow' : 'TaskFlow';
+import 'package:production_ready_app/main.dart';
+import 'package:production_ready_app/services/task_service.dart';
 
-  static String home(Locale locale) =>
-      locale.languageCode == 'en' ? 'Home' : 'Accueil';
+void main() {
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  static String tasks(Locale locale) =>
-      locale.languageCode == 'en' ? 'Tasks' : 'Tâches';
+  group('Tests d integration (End-to-End)', () {
+    testWidgets('1. Lancement de l application et verification de la navigation', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        ChangeNotifierProvider(
+          create: (_) => TaskService(),
+          child: const TaskFlowApp(),
+        ),
+      );
 
-  static String add(Locale locale) =>
-      locale.languageCode == 'en' ? 'Add' : 'Ajouter';
+      await tester.pumpAndSettle();
 
-  static String statistics(Locale locale) =>
-      locale.languageCode == 'en' ? 'Statistics' : 'Statistiques';
+      expect(find.byType(NavigationBar), findsOneWidget);
+    });
 
-  static String settings(Locale locale) =>
-      locale.languageCode == 'en' ? 'Settings' : 'Paramètres';
+    testWidgets('2. Navigation vers les differents onglets', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        ChangeNotifierProvider(
+          create: (_) => TaskService(),
+          child: const TaskFlowApp(),
+        ),
+      );
 
-  static String welcome(Locale locale) => locale.languageCode == 'en'
-      ? 'Welcome to TaskFlow'
-      : 'Bienvenue sur TaskFlow';
+      await tester.pumpAndSettle();
 
-  static String subtitle(Locale locale) => locale.languageCode == 'en'
-      ? 'Organize your tasks simply and efficiently.'
-      : 'Organisez vos tâches simplement et efficacement.';
+      final destinations = find.byType(NavigationDestination);
+      if (destinations.evaluate().length > 1) {
+        await tester.tap(destinations.at(1));
+        await tester.pumpAndSettle();
+      }
 
-  static String myTasks(Locale locale) =>
-      locale.languageCode == 'en' ? 'My tasks' : 'Mes tâches';
-
-  static String addTask(Locale locale) =>
-      locale.languageCode == 'en' ? 'Add a task' : 'Ajouter une tâche';
-
-  static String taskList(Locale locale) =>
-      locale.languageCode == 'en' ? 'Task list' : 'Liste des tâches';
-
-  static String statisticsTitle(Locale locale) => locale.languageCode == 'en'
-      ? 'Task statistics'
-      : 'Statistiques des tâches';
-
-  static String settingsTitle(Locale locale) => locale.languageCode == 'en'
-      ? 'Application settings'
-      : "Paramètres de l'application";
+      expect(find.byType(Scaffold), findsWidgets);
+    });
+  });
 }

@@ -15,7 +15,7 @@ TaskFlow est une application Flutter de gestion de tâches conçue avec une appr
 - Navigation entre cinq écrans
 - Validation des formulaires
 - Support de l'accessibilité avec des labels sémantiques
-- Utilisation de widgets `const` lorsque cela est possible
+- Utilisation de widgets const lorsque cela est possible
 
 ## Écrans
 
@@ -26,15 +26,16 @@ L'application contient cinq écrans principaux :
 3. Ajouter une tâche
 4. Statistiques
 5. Paramètres
+
 ## Architecture
 
 Le projet utilise une structure simple et organisée :
 
+
 ```text
 lib/
 ├── main.dart
-├── localization/
-│   └── app_texts.dart
+├── app_texts.dart
 ├── models/
 │   └── task.dart
 ├── screens/
@@ -45,20 +46,21 @@ lib/
 │   └── settings_screen.dart
 └── services/
     └── task_service.dart
-```
 
-- `localization/` contient les textes utilisés pour le français et l'anglais.
-- `models/` contient les modèles de données.
-- `screens/` contient les écrans de l'application.
-- `services/` contient la logique de gestion des tâches.
-- `main.dart` contient la configuration de l'application et la navigation principale.
+
+- app_texts.dart contient les textes et traductions pour le français et l'anglais.
+- models/ contient les modèles de données.
+- screens/ contient les écrans de l'application.
+- services/ contient la logique de gestion des tâches.
+- main.dart contient la configuration de l'application et la navigation principale.
+
 ## Tests
 
 Le projet comprend plusieurs niveaux de tests :
 
-- **10 tests unitaires** pour le modèle `Task` et le service `TaskService`
-- **6 tests de widgets** pour vérifier le comportement de l'interface
-- **2 tests d'intégration** pour vérifier les parcours utilisateur
+- 10 tests unitaires pour le modèle Task et le service TaskService
+- 6 tests de widgets pour vérifier le comportement de l'interface
+- 2 tests d'intégration pour vérifier les parcours utilisateur
 
 Les tests classiques sont exécutés avec :
 
@@ -69,7 +71,7 @@ flutter test
 Pour exécuter les tests d'intégration :
 
 ```bash
-flutter test integration_test
+flutter test integration_test/app_test.dart
 ```
 
 ## Qualité du code
@@ -99,7 +101,7 @@ Les éléments interactifs importants de l'application utilisent des information
 
 L'application privilégie :
 
-- Les widgets `const` lorsque cela est possible
+- Les widgets const lorsque cela est possible
 - Une structure simple limitant les reconstructions inutiles
 - L'affichage des tâches avec une liste adaptée aux performances
 
@@ -158,13 +160,13 @@ Puis vérifier les tests d'intégration.
 
 ## CI/CD
 
-Le projet utilise **GitHub Actions** pour automatiser l'analyse du code et l'exécution des tests à chaque modification du dépôt.
+Le projet utilise GitHub Actions pour automatiser l'analyse du code et l'exécution des tests à chaque modification du dépôt.
 
 Le workflow CI exécute notamment :
 
-- `flutter pub get`
-- `flutter analyze`
-- `flutter test`
+- flutter pub get
+- flutter analyze
+- flutter test
 
 ## Captures d'écran
 
@@ -192,13 +194,14 @@ Le workflow CI exécute notamment :
 
 - Flutter
 - Dart
+- Provider
 - Flutter Test
 - Integration Test
 - GitHub Actions
 
 ## Versions
 
-Les principales évolutions du projet sont documentées dans le fichier `CHANGELOG.md`.
+Les principales évolutions du projet sont documentées dans le fichier CHANGELOG.md.
 
 ## Licence
 

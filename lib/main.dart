@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:production_ready_app/app_texts.dart';
 
 import 'localization/app_texts.dart';
 import 'screens/add_task_screen.dart';
@@ -10,7 +12,12 @@ import 'screens/tasks_screen.dart';
 import 'services/task_service.dart';
 
 void main() {
-  runApp(const TaskFlowApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => TaskService(),
+      child: const TaskFlowApp(),
+    ),
+  );
 }
 
 class TaskFlowApp extends StatefulWidget {
@@ -72,8 +79,6 @@ class MainNavigation extends StatefulWidget {
 class _MainNavigationState extends State<MainNavigation> {
   int _currentIndex = 0;
 
-  final TaskService _taskService = TaskService();
-
   @override
   Widget build(BuildContext context) {
     final locale = Localizations.localeOf(context);
@@ -82,21 +87,10 @@ class _MainNavigationState extends State<MainNavigation> {
       body: IndexedStack(
         index: _currentIndex,
         children: [
-          HomeScreen(
-            taskService: _taskService,
-          ),
-          TasksScreen(
-            taskService: _taskService,
-          ),
-          AddTaskScreen(
-            taskService: _taskService,
-            onTaskAdded: () {
-              setState(() {});
-            },
-          ),
-          StatisticsScreen(
-            taskService: _taskService,
-          ),
+          const HomeScreen(),
+          const TasksScreen(),
+          const AddTaskScreen(),
+          const StatisticsScreen(),
           SettingsScreen(
             onLanguageChanged: widget.onLanguageChanged,
           ),
