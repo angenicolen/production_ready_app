@@ -31,7 +31,6 @@ L'application contient cinq écrans principaux :
 
 Le projet utilise une structure simple et organisée :
 
-
 ```text
 lib/
 ├── main.dart
@@ -46,12 +45,17 @@ lib/
 │   └── settings_screen.dart
 └── services/
     └── task_service.dart
+```
 
 
 - app_texts.dart contient les textes et traductions pour le français et l'anglais.
+
 - models/ contient les modèles de données.
+
 - screens/ contient les écrans de l'application.
+
 - services/ contient la logique de gestion des tâches.
+
 - main.dart contient la configuration de l'application et la navigation principale.
 
 ## Tests
