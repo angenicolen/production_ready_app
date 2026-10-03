@@ -1,37 +1,23 @@
 # Changelog
 
-Toutes les modifications importantes du projet TaskFlow sont documentées dans ce fichier.
+Toutes les évolutions du projet TaskFlow sont documentées dans ce fichier.
 
-## [1.0.0] - 2026-09-25
-
+## [1.0.0] - 2026-09-26
 ### Ajouté
-- Application complète de gestion de tâches
-- Navigation entre 5 écrans (Accueil, Tâches, Ajout, Statistiques, Détails de la tâche)
-- Migration de la gestion d'état vers Provider (découplage du TaskService)
-- Création, suppression et modification de l'état des tâches
-- Statistiques complètes sur les tâches
-- Support du français et de l'anglais (i10n)
-- Validation des formulaires et gestion d'erreurs
-- Support de l'accessibilité avec des labels sémantiques (`Semantics`)
-- Suite de tests complète (10 tests unitaires, 5 tests de widgets, 2 tests d'intégration)
-- Configuration de la CI/CD avec GitHub Actions et analyse statique (`flutter analyze clean`)
+- Finalisation de l'application TaskFlow pour la production.
+- Ajout de la suite complète de tests (unitaires, widgets et intégration).
+- Nettoyage des imports et optimisation de l'analyse statique.
+- Configuration finale du workflow GitHub Actions CI.
 
-## [0.2.0] - 2026-09-20
-
+## [0.2.0] - 2026-09-24
 ### Ajouté
-- Mise en place des premiers tests unitaires et de widgets
-- Ajout des tests d'intégration de base
-- Internationalisation français/anglais
-- Écran des paramètres
-- Écran des statistiques
+- Implémentation des 5 écrans principaux (Accueil, Mes tâches, Ajouter, Statistiques, Paramètres).
+- Gestion de l'état avec Provider (`TaskService`).
+- Support de l'internationalisation (Français et Anglais).
+- Ajout des labels d'accessibilité (`Semantics`).
 
-## [0.1.0] - 2026-09-15
-
+## [0.1.0] - 2026-09-22
 ### Ajouté
-- Création de l'application TaskFlow
-- Modèle `Task`
-- Service `TaskService` en mémoire
-- Écran d'accueil
-- Écran de gestion des tâches
-- Écran d'ajout d'une tâche
-- Navigation principale de l'application
+- Initialisation du projet Flutter et de la structure du code (`models`, `services`, `screens`).
+- Création du modèle de données `Task`.
+- Configuration de l'analyse statique et du dépôt GitHub.
