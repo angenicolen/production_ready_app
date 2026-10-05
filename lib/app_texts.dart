@@ -1,4 +1,4 @@
-﻿import 'dart:ui';
+import 'dart:ui';
 
 class AppTexts {
   static String title(Locale locale) =>
