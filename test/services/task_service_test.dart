@@ -4,7 +4,12 @@ import 'package:production_ready_app/services/task_service.dart';
 
 void main() {
   group('TaskService', () {
-    test('ajoute une tâche', () {
+    test('1. initialise avec une liste vide ou par défaut', () {
+      final service = TaskService();
+      expect(service.tasks, isNotNull);
+    });
+
+    test('2. ajoute une tâche', () {
       final service = TaskService();
 
       const task = Task(
@@ -19,7 +24,7 @@ void main() {
       expect(service.tasks.first.title, 'Réviser Flutter');
     });
 
-    test('supprime une tâche', () {
+    test('3. supprime une tâche', () {
       final service = TaskService();
 
       const task = Task(
@@ -34,7 +39,7 @@ void main() {
       expect(service.tasks, isEmpty);
     });
 
-    test('marque une tâche comme terminée', () {
+    test('4. marque une tâche comme terminée', () {
       final service = TaskService();
 
       const task = Task(
@@ -49,7 +54,7 @@ void main() {
       expect(service.tasks.first.isCompleted, isTrue);
     });
 
-    test('compte les tâches terminées', () {
+    test('5. compte les tâches terminées', () {
       final service = TaskService();
 
       service.addTask(
@@ -73,7 +78,7 @@ void main() {
       expect(service.completedCount, 1);
     });
 
-    test('compte les tâches en attente', () {
+    test('6. compte les tâches en attente', () {
       final service = TaskService();
 
       service.addTask(

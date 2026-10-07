@@ -49,7 +49,6 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      // Vérifie qu un FAB ou des icônes d interaction sont présentes à l écran
       final fab = find.byType(FloatingActionButton);
       if (fab.evaluate().isNotEmpty) {
         expect(fab, findsOneWidget);
