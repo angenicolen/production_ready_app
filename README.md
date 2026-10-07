@@ -1,212 +1,137 @@
-# TaskFlow
-[![Flutter CI](https://github.com/angenicolen/production_ready_app/actions/workflows/ci.yml/badge.svg)](https://github.com/angenicolen/production_ready_app/actions/workflows/ci.yml)
+# TaskFlow ??
 
-TaskFlow est une application Flutter de gestion de tÃ¢ches conÃ§ue avec une approche orientÃ©e vers la qualitÃ©, les tests et la prÃ©paration Ã  la production.
+[![Flutter CI](https://github.com/angenicolen/production_ready_app/actions/workflows/flutter_ci.yml/badge.svg)](https://github.com/angenicolen/production_ready_app/actions/workflows/flutter_ci.yml)
 
-## FonctionnalitÃ©s
+TaskFlow est une application Flutter de gestion de tâches conçue avec une approche orientée vers la qualité, les tests et la préparation à la production.
+
+## Fonctionnalités
 
 - Affichage d'un tableau de bord d'accueil
-- CrÃ©ation de tÃ¢ches
-- Affichage de la liste des tÃ¢ches
-- Marquage d'une tÃ¢che comme terminÃ©e ou non terminÃ©e
-- Suppression de tÃ¢ches
-- Statistiques sur les tÃ¢ches terminÃ©es et en attente
-- Changement de langue entre franÃ§ais et anglais
-- Navigation entre cinq Ã©crans
+- Création et consultation détaillée des tâches
+- Affichage de la liste des tâches
+- Marquage d'une tâche comme terminée ou non terminée
+- Suppression de tâches
+- Statistiques sur les tâches terminées et en attente
+- Changement de langue entre français et anglais
+- Navigation fluide entre tous les écrans
 - Validation des formulaires
-- Support de l'accessibilitÃ© avec des labels sÃ©mantiques
-- Utilisation de widgets const lorsque cela est possible
+- Support de l'accessibilité avec des labels sémantiques (\Semantics\)
+- Optimisation des rendus grâce aux widgets \const\ et au pattern \Provider\
 
-## Ã‰crans
+## Écrans
 
-L'application contient cinq Ã©crans principaux :
+L'application contient les écrans principaux :
 
-1. Accueil
-2. Mes tÃ¢ches
-3. Ajouter une tÃ¢che
-4. Statistiques
-5. ParamÃ¨tres
+1. Accueil (\HomeScreen\)
+2. Mes tâches (\TasksScreen\)
+3. Détail de la tâche (\TaskDetailScreen\)
+4. Ajouter une tâche (\AddTaskScreen\)
+5. Statistiques (\StatisticsScreen\)
+6. Paramètres (\SettingsScreen\)
 
 ## Architecture
 
-Le projet utilise une structure simple et organisÃ©e :
+Le projet utilise une structure orientée par couches (Layer-first) :
 
-```text
+\\\	ext
 lib/
-â”œâ”€â”€ main.dart
-â”œâ”€â”€ app_texts.dart
-â”œâ”€â”€ models/
-â”‚   â””â”€â”€ task.dart
-â”œâ”€â”€ screens/
-â”‚   â”œâ”€â”€ home_screen.dart
-â”‚   â”œâ”€â”€ tasks_screen.dart
-â”‚   â”œâ”€â”€ add_task_screen.dart
-â”‚   â”œâ”€â”€ statistics_screen.dart
-â”‚   â””â”€â”€ settings_screen.dart
-â””â”€â”€ services/
-    â””â”€â”€ task_service.dart
-```
++-- main.dart
++-- constants/
+¦   +-- app_texts.dart
++-- models/
+¦   +-- task.dart
++-- screens/
+¦   +-- home_screen.dart
+¦   +-- tasks_screen.dart
+¦   +-- task_detail_screen.dart
+¦   +-- add_task_screen.dart
+¦   +-- statistics_screen.dart
+¦   +-- settings_screen.dart
++-- services/
+    +-- task_service.dart
+\\\
 
+- \pp_texts.dart\ contient les textes et traductions pour le français et l'anglais.
+- \models/\ contient le modèle de données \Task\.
+- \screens/\ contient l'ensemble des écrans de l'application.
+- \services/\ contient la logique métier et la gestion d'état avec \Provider\.
 
-- app_texts.dart contient les textes et traductions pour le franÃ§ais et l'anglais.
+## Tests & Couverture (17 fichiers)
 
-- models/ contient les modÃ¨les de donnÃ©es.
+Le projet comprend une suite complète de **17 fichiers de tests individuels** :
 
-- screens/ contient les Ã©crans de l'application.
+- **10 tests unitaires** (\	est/unit/\) pour le modèle Task et le service TaskService.
+- **5 tests de widgets** (\	est/widgets/\) pour vérifier le comportement de l'interface et des composants.
+- **2 tests d'intégration** (\integration_test/\) pour valider le lancement et les parcours utilisateurs principaux.
 
-- services/ contient la logique de gestion des tÃ¢ches.
+Exécution des tests unitaires et de widgets :
 
-- main.dart contient la configuration de l'application et la navigation principale.
-
-## Tests
-
-Le projet comprend plusieurs niveaux de tests :
-
-- 10 tests unitaires pour le modÃ¨le Task et le service TaskService
-- 6 tests de widgets pour vÃ©rifier le comportement de l'interface
-- 2 tests d'intÃ©gration pour vÃ©rifier les parcours utilisateur
-
-Les tests classiques sont exÃ©cutÃ©s avec :
-
-```bash
+\\\ash
 flutter test
-```
+\\\
 
-Pour exÃ©cuter les tests d'intÃ©gration :
+Exécution des tests d'intégration :
 
-```bash
-flutter test integration_test/app_test.dart
-```
+\\\ash
+flutter test integration_test/app_launch_test.dart
+flutter test integration_test/app_navigation_test.dart
+\\\
 
-## QualitÃ© du code
+## Qualité du code
 
-L'analyse statique du projet est effectuÃ©e avec :
+L'analyse statique du projet est effectuée avec :
 
-```bash
+\\\ash
 flutter analyze
-```
+\\\
 
-Le projet doit rester sans erreurs ni avertissements avant chaque livraison.
+Le projet reste sans erreurs ni avertissements (0 warning / 0 error).
 
 ## Internationalisation
 
-TaskFlow prend en charge deux langues :
+TaskFlow prend en charge deux langues (FR + EN) :
 
-- FranÃ§ais
+- Français
 - English
 
-L'utilisateur peut changer de langue depuis l'Ã©cran ParamÃ¨tres.
+L'utilisateur peut basculer la langue directement depuis l'écran Paramètres.
 
-## AccessibilitÃ©
+## Accessibilité
 
-Les Ã©lÃ©ments interactifs importants de l'application utilisent des informations sÃ©mantiques afin de faciliter leur utilisation avec les technologies d'assistance.
+Les éléments interactifs importants de l'application intègrent des labels sémantiques (\Semantics\) afin de faciliter leur utilisation avec les technologies d'assistance et lecteurs d'écran.
 
 ## Performance
 
-L'application privilÃ©gie :
+L'application privilégie :
 
-- Les widgets const lorsque cela est possible
-- Une structure simple limitant les reconstructions inutiles
-- L'affichage des tÃ¢ches avec une liste adaptÃ©e aux performances
-
-L'application n'utilise pas d'images distantes ou lourdes nÃ©cessitant une optimisation particuliÃ¨re.
+- L'utilisation systématique de widgets \const\ pour éviter les reconstructions inutiles.
+- Une gestion d'état ciblée avec \ChangeNotifierProvider\ et \Consumer\.
+- Des listes adaptées pour assurer un défilement fluide.
 
 ## Installation
 
-### PrÃ©requis
+### Prérequis
 
-- Flutter
-- Dart
-- Google Chrome pour les tests d'intÃ©gration
+- Flutter & Dart SDK
+- Google Chrome (optionnel pour tests web)
 
 ### Installation
 
-Cloner le dÃ©pÃ´t :
-
-```bash
+\\\ash
 git clone https://github.com/angenicolen/production_ready_app.git
-```
-
-Entrer dans le projet :
-
-```bash
 cd production_ready_app
-```
-
-Installer les dÃ©pendances :
-
-```bash
 flutter pub get
-```
-
-Lancer l'application :
-
-```bash
 flutter run
-```
-
-Pour lancer l'application sur Chrome :
-
-```bash
-flutter run -d chrome
-```
-
-## VÃ©rification
-
-Avant de publier une nouvelle version, exÃ©cuter :
-
-```bash
-flutter analyze
-flutter test
-```
-
-Puis vÃ©rifier les tests d'intÃ©gration.
+\\\
 
 ## CI/CD
 
-Le projet utilise GitHub Actions pour automatiser l'analyse du code et l'exÃ©cution des tests Ã  chaque modification du dÃ©pÃ´t.
+Le projet utilise **GitHub Actions** (\lutter_ci.yml\) pour automatiser la qualité du code à chaque push :
 
-Le workflow CI exÃ©cute notamment :
-
-- flutter pub get
-- flutter analyze
-- flutter test
-
-## Captures d'Ã©cran
-
-### Accueil
-
-![Accueil](screenshots/home.png)
-
-### Mes tÃ¢ches
-
-![Mes tÃ¢ches](screenshots/tasks.png)
-
-### Ajouter une tÃ¢che
-
-![Ajouter une tÃ¢che](screenshots/add-task.png)
-
-### Statistiques
-
-![Statistiques](screenshots/statistics.png)
-
-### ParamÃ¨tres
-
-![ParamÃ¨tres](screenshots/settings.png)
-
-## Technologies utilisÃ©es
-
-- Flutter
-- Dart
-- Provider
-- Flutter Test
-- Integration Test
-- GitHub Actions
+- \lutter pub get\
+- \lutter analyze\
+- \lutter test\
 
 ## Versions
 
-Les principales Ã©volutions du projet sont documentÃ©es dans le fichier CHANGELOG.md.
-
-## Licence
-
-Ce projet a Ã©tÃ© rÃ©alisÃ© dans le cadre d'un projet Flutter de formation.
+Les principales évolutions du projet sont documentées dans le fichier \CHANGELOG.md\.
